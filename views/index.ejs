@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link href="public/styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Weather App</h1>
+    <form action="/" method="post">
+      <label for="cityInput">City Name</label>
+      <input id="cityInput" type="text" name="place" placeholder="Enter city name" required>
+      <button type="submit">Get Weather</button>
+    </form>
+
+    <% if (weatherData) { %>
+      <div class="weather-info">
+        <h2><%= weatherData.name %>, <%= weatherData.sys.country %></h2>
+        <p><%= weatherData.weather[0].description %></p>
+        <p>Temperature: <%= weatherData.main.temp %>°C</p>
+        <img src="http://openweathermap.org/img/w/<%= weatherData.weather[0].icon %>.png" alt="Weather Icon">
+      </div>
+    <% } %>
+  </div>
+
+  <script src="app.js" charset="UTF-8"></script>
+</body>
+</html>
